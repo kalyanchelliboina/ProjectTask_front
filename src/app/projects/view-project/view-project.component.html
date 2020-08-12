@@ -1,0 +1,40 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Project Name:</h4>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                </tr>
+            </thead>
+            <tbody>
+                <div class="" *ngFor="let e of projectData">
+                    <h6>{{e.name}}</h6>
+                    <button class="btn btn-primary" [routerLink] = "['/create-task', e._id]">Create Task</button>
+                  </div>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">All Tasks</h4>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let d of viewAllTask">
+                    <td>{{d.name}}</td>
+                    <td>
+                        <button class="btn btn-primary" (click)="doUpdate(t)">Update</button>
+                        <button class="btn btn-primary" [routerLink] = "['/view-task', d._id]">View</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

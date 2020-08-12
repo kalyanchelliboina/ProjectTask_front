@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="card rounded-0">
+           <div class="card-header">
+            <h3 class="mb-0">Create project</h3>
+        </div>
+        <div class="card-body">
+            <form class="form">
+                <div class="form-group">
+                    <label for="">Name</label>
+                    <input [(ngModel)]="project.name" name="name" type="text" class="form-control rounded-0" required>
+                </div>
+                <button (click)="createProject()" type="button" class="btn btn-success float-right">Submit</button>
+            </form>
+        </div>
+        </div>
+    </div>
+  </div>

@@ -1,0 +1,100 @@
+<div class="row">
+  <div class="col-md-10 mx-auto">
+      <div class="card rounded-0">
+         <div class="card-header">
+          <h2>Task Title: {{taskTitle}}</h2>
+          <!-- <h3 class="mb-0">Comment Here</h3> -->
+      </div>
+      <div style="color:green;text-align:center;font-size:20px;margin-top:10px;" *ngIf="showSuccessMessage">
+          TASK SUCCESSFULLY CREATED
+      </div>
+      <div class="card-body">
+          <form class="">
+              <div class="">
+                  <label  style="margin-left:0px;" for="startDate">Start Date</label>
+                  <input style="margin-left:40px;width:177px; display:inline-block" [(ngModel)]="sendData2.startDate" name="startDate" type="date" class="form-control rounded-0" required>
+              
+              
+                  <label style="margin-left:200px;" for="endDate">End Date</label>
+                  <input style="margin-left:30px; width:177px; display:inline-block" [(ngModel)]="sendData2.endDate" name="endDate" type="date" class="form-control rounded-0" required>
+              </div>
+              <br>
+              <div>
+                  <label for="workHours">Work Hours: (hrs)</label>
+                  <input style="margin-left:40px;width:177px;display:inline-block" [(ngModel)]="sendData2.workHours" name="workHours" type="data" class="form-control rounded-0" required>
+              </div>
+              <div>
+                  <label style="margin-top:20px;" for="description">Description:</label>
+                  <p>{{sendData2.description}}</p>
+                  <button (click)="ShowDescription()">Edit Description</button>
+                  <textarea *ngIf="showDescription" style="margin: 50px; height: 103px; width: 731px; display:inline-block" [(ngModel)]="sendData2.description" name="description"></textarea>
+                  <button *ngIf="showDescription" (click)="closeDescription()">Close</button>
+              </div>
+      
+              <button (click)="updateDateDescription()" type="button" class="btn btn-primary float-right">Submit</button>
+          </form>
+      </div>
+      </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="logTime">
+  <div class="col-md-6 mx-auto">
+      <div class="card rounded-0">
+         <div class="card-header">
+            
+          <!-- <h3 class="mb-0">Comment Here</h3> -->
+      </div>
+      <div style="color:green;text-align:center;font-size:20px;margin-top:10px;" *ngIf="showSuccessMessage">
+          TASK SUCCESSFULLY CREATED
+      </div>
+      <div class="card-body">
+          <form class="form">
+              <div class="form-group">
+                  <label for="Title">Comment here</label>
+                  <input [(ngModel)]="sendData.comment" name="Title" type="text" class="form-control rounded-0" required>
+              </div>
+              <div class="form-group">
+                  <label for="TimeLog">Time Log</label>
+                  <input [(ngModel)]="sendData.timeLog" name="TimeLog" type="text" class="form-control rounded-0" required>
+              </div>
+              <div class="form-group">
+                  <label for="billOrNonbill">Billable / NonBillable</label>
+                  <select  [(ngModel)]="sendData.billOrNonbill" name="billOrNonbill" class="form-control" placeholder="--select--" >
+                      <option 
+                        *ngFor="let value of values">{{value.text}}</option>
+                    </select>
+              </div>
+              <button (click)="closelogTime()" type="button" class="btn btn-primary float-right">close</button>
+              <button (click)="createComment()" type="button" class="btn btn-primary float-right">Submit</button>
+          </form>
+      </div>
+      </div>
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="card-body">
+      <h4 class="card-title">All Comments</h4>
+      <button (click)="showlogTime()">Log Time</button>
+      <table class="table table-hover">
+          <thead>
+              <tr>
+                  <th>Comment</th>
+                  <th>Time Log</th>
+                  <th>Billable / Non Billable</th>
+                  <th>Commented By</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let v of commentsData">
+                  <td>{{v.comment}}</td>
+                  <td>{{v.timeLog}}</td>
+                  <td>{{v.billableOrNonBillable}}</td>
+                  <td>{{v.commentator}}</td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
