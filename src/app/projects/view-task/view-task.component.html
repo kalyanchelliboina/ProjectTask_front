@@ -30,6 +30,10 @@
                   <textarea *ngIf="showDescription" style="margin: 50px; height: 103px; width: 731px; display:inline-block" [(ngModel)]="sendData2.description" name="description"></textarea>
                   <button *ngIf="showDescription" (click)="closeDescription()">Close</button>
               </div>
+              <div>
+                <label for="workHours">File: </label>
+                <a href="http://localhost:3000/uploads/{{sendData2.file}}">{{sendData2.file}}</a>
+              </div>
       
               <button (click)="updateDateDescription()" type="button" class="btn btn-primary float-right">Submit</button>
           </form>
@@ -37,6 +41,47 @@
       </div>
   </div>
 </div>
+
+<div style="text-align: center">
+    <form>      
+      <div>
+        <input type="file" name="image" (change)="selectImage($event)" />
+      </div>
+      <br>
+      <div>
+        <button type="submit" (click)="onSubmit()">Upload</button>
+      </div>
+    </form>
+  </div>
+
+  <mat-form-field class="example-chip-list">
+    <mat-chip-list #chipList aria-label="Fruit selection">
+      <mat-chip
+        *ngFor="let fruit of fruits"
+        [selectable]="selectable"
+        [removable]="removable"
+        (removed)="remove(fruit)">
+        {{fruit}}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+      <input
+        placeholder="assign here ..."
+        #fruitInput
+        [formControl]="fruitCtrl"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+        {{fruit}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <div style="text-align: center">
+  <button (click)="assignedData()">assigned</button>
+  </div>
 
 <div class="row" *ngIf="logTime">
   <div class="col-md-6 mx-auto">

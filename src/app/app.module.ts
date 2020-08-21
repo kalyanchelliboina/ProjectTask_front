@@ -17,6 +17,11 @@ import { ViewProjectComponent } from './projects/view-project/view-project.compo
 import { ViewProjectsComponent } from './projects/view-projects/view-projects.component';
 import { CreateTaskComponent } from './projects/create-task/create-task.component';
 import { ViewTaskComponent } from './projects/view-task/view-task.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {MatChipsModule} from '@angular/material/chips';
+import { MatIconModule, MatFormFieldModule} from '@angular/material';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -35,7 +40,12 @@ import { ViewTaskComponent } from './projects/view-task/view-task.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatChipsModule,
+    MatIconModule,
+    MatAutocompleteModule,
+    MatFormFieldModule
   ],
   providers: [AuthGuard, AuthService, ProjectService],
   bootstrap: [AppComponent]

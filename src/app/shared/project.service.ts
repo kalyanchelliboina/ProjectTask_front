@@ -46,5 +46,20 @@ updateDateDescription(id,data) {
   return this.http.patch<any>(this.baseUrl + '/project/updateTask/dateDescription/' + id, data, {headers: { authorization: localStorage.getItem('token')}})
 }
 
+fileupload(id, data){
+  return this.http.post<any>(this.baseUrl + '/project/file/' + id, data, {headers: { authorization: localStorage.getItem('token')}})
+}
+
+assignedData(id, data) {
+  return this.http.post<any>(this.baseUrl + '/project/assigned/' + id, data, {headers: { authorization: localStorage.getItem('token')}})
+}
+
+getUserEmails() {
+  return this.http.get<any>(this.baseUrl + '/project/userEmails/', {headers: { authorization: localStorage.getItem('token')}})
+}
+
+sendEmailAfterAssign(data, title, projectName) {
+  return this.http.post<any>(this.baseUrl + '/project/sendmail/' + title + '/' + projectName, data, {headers: { authorization: localStorage.getItem('token')}})
+}
 
 }
